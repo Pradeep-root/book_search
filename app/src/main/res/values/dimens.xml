@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_book_image_width">110dp</dimen>
+    <dimen name="list_book_imag_height">150dp</dimen>
+
+
+    <dimen name="text_size_in_list">14dp</dimen>
+    <dimen name="book_title_top_margin_list">16dp</dimen>
+    <dimen name="txt_margin_start_list">8dp</dimen>
+    <dimen name="card_view_margin">2dp</dimen>
+</resources>

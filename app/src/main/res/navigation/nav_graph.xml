@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/bookSearchFragment">
+
+    <fragment
+        android:id="@+id/bookSearchFragment"
+        android:name="com.pradeep.booksearch.ui.BookSearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_book_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.pradeep.booksearch.ui.BookDetailsFragment"
+        android:label="fragment_book_details"
+        tools:layout="@layout/fragment_book_details" >
+        <action
+            android:id="@+id/action_bookDetailsFragment_to_bookSearchFragment2"
+            app:popUpTo="@id/bookSearchFragment" />
+    </fragment>
+</navigation>

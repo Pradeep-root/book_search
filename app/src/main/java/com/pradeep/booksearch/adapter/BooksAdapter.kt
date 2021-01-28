@@ -1,19 +1,26 @@
 package com.pradeep.booksearch.adapter
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pradeep.booksearch.Book
+import com.pradeep.booksearch.databinding.ItemLyoutBooksBinding
 
 class BooksAdapter(private var books : ArrayList<Book>) : RecyclerView.Adapter<BooksAdapter.BookHolderView>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksAdapter.BookHolderView {
-        TODO("Not yet implemented")
+         var layoutInflater = LayoutInflater.from(parent.context)
+         var binding = ItemLyoutBooksBinding.inflate(layoutInflater, parent, false)
+         return BookHolderView(binding)
     }
 
-    inner class BookHolderView(view: View) : RecyclerView.ViewHolder(view){
-        // TODO data binding here
+    inner class BookHolderView(binding: ItemLyoutBooksBinding) : RecyclerView.ViewHolder(binding.root){
+
+        fun bind(book: Book){
+            //TODO set data here
+        }
 
     }
 
@@ -22,8 +29,8 @@ class BooksAdapter(private var books : ArrayList<Book>) : RecyclerView.Adapter<B
     }
 
     override fun onBindViewHolder(holder: BooksAdapter.BookHolderView, position: Int) {
-        TODO("Not yet implemented")
+        // var book = books.get(position)
+         holder.bind(Book())
     }
-
 
 }

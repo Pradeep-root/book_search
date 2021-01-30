@@ -1,6 +1,13 @@
 package com.pradeep.booksearch.data.model
 
+import android.content.res.Resources
+import android.util.Log
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 import com.google.gson.annotations.SerializedName
+import com.pradeep.booksearch.R
+import com.squareup.picasso.Picasso
 
 data class Book(
 
@@ -21,7 +28,7 @@ data class Book(
         @SerializedName("imageLinks")
         var imageLinks : ImageLinks
     ) {
-        data class ImageLinks(
+         class ImageLinks(
             @SerializedName("smallThumbnail")
             var smallThumbnail : String? = null,
 
@@ -29,5 +36,20 @@ data class Book(
             var thumbnail : String? = null
 
         )
+
+        fun authorNames() : String? {
+            if(authors == null){
+               // return Resources.getSystem().getString(R.string.author_info_not_available)
+                return "Author information not available"
+            }
+            return authors?.joinToString(separator = ",")
+        }
     }
+}
+
+@BindingAdapter("imageUrl")
+fun loadCover(view : ImageView, url : String?){
+    Log.d("loadCover", url)
+    Picasso.get().load(url).placeholder(R.drawable.book_cover_placeholder).into(view)
+
 }

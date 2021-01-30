@@ -1,10 +1,9 @@
 package com.pradeep.booksearch.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.pradeep.booksearch.Book
+import com.pradeep.booksearch.data.model.Book
 import com.pradeep.booksearch.databinding.ItemLyoutBooksBinding
 
 class BooksAdapter(private var books : ArrayList<Book>) : RecyclerView.Adapter<BooksAdapter.BookHolderView>() {

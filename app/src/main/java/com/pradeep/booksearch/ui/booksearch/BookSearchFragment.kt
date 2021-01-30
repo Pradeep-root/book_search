@@ -1,6 +1,5 @@
-package com.pradeep.booksearch.ui
+package com.pradeep.booksearch.ui.booksearch
 
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
-import com.pradeep.booksearch.Book
+import com.pradeep.booksearch.data.model.Book
 import com.pradeep.booksearch.R
 import com.pradeep.booksearch.adapter.BooksAdapter
 import com.pradeep.booksearch.databinding.FragmentBookSearchBinding

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="book"
-            type="com.pradeep.booksearch.Book" />
+            type="com.pradeep.booksearch.data.model.Book" />
 
     </data>
 

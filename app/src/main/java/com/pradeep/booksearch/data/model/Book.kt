@@ -1,10 +1,8 @@
 package com.pradeep.booksearch.data.model
 
-import android.content.res.Resources
 import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
 import com.google.gson.annotations.SerializedName
 import com.pradeep.booksearch.R
 import com.squareup.picasso.Picasso

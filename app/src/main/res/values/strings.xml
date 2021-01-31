@@ -2,4 +2,6 @@
     <string name="app_name">BookSearch</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="author_info_not_available">Author information not available</string>
+    <string name="search">Search</string>
+    <string name="search_box_hint">Type here to search books</string>
 </resources>

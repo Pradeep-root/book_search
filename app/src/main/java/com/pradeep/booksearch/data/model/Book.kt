@@ -47,7 +47,6 @@ data class Book(
 
 @BindingAdapter("imageUrl")
 fun loadCover(view : ImageView, url : String?){
-    Log.d("loadCover", url)
-    Picasso.get().load(url).placeholder(R.drawable.book_cover_placeholder).into(view)
+    Picasso.get().load(url).placeholder(R.drawable.book_cover_placeholder).error(R.drawable.ic_image_load_error).into(view)
 
 }

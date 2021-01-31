@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -32,13 +31,15 @@ class BookSearchFragment : BaseFragment() {
         var rootView = binding.root
         viewModel = ViewModelProvider(requireActivity()).get(BookSearchViewModel::class.java)
 
+        binding.searchViewModel = viewModel
+
         configureBookList()
-        searchBook()
+        loadSearchedBook()
         return rootView
     }
 
-    private fun searchBook() {
-        viewModel.searchBooks("flowers").observe(requireActivity(), Observer { books : List<Book>? ->
+    private fun loadSearchedBook() {
+        viewModel.searchedResult().observe(requireActivity(), Observer { books : List<Book>? ->
             if(books == null){
                // TODO show msg result not found
             }else{

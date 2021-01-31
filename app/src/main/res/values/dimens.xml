@@ -12,4 +12,8 @@
     <dimen name="cardview_corner_radius">4dp</dimen>
     <dimen name="item_divider_height">2dp</dimen>
     <dimen name="book_cover_start_margin">4dp</dimen>
+    <dimen name="search_text_size">14sp</dimen>
+    <dimen name="search_text_padding">8dp</dimen>
+    <dimen name="search_edit_margin_end">4dp</dimen>
+    <dimen name="search_edit_margin_start">8dp</dimen>
 </resources>

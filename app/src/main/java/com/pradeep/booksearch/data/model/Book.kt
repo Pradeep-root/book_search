@@ -1,6 +1,5 @@
 package com.pradeep.booksearch.data.model
 
-import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.google.gson.annotations.SerializedName

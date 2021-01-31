@@ -17,7 +17,6 @@ class BookSearchViewModel(private var repository: BookRepository = BookRepositor
 
     var searchText = ObservableField<String>("")
     private var searchResultLiveData = MediatorLiveData<List<Book>>()
-    private var hideKeyboard = MutableLiveData<Boolean>()
 
     var showProgressBar = ObservableField<Boolean>()
 
@@ -26,17 +25,12 @@ class BookSearchViewModel(private var repository: BookRepository = BookRepositor
     }
 
     fun searchBooks(){
-        hideKeyboard.value = true
         showProgressBar.set(true)
 
         searchResultLiveData.addSource(repository.searchBooks(query = searchText.get()?:"")){
             searchResultLiveData.postValue(it)
             showProgressBar.set(false)
         }
-    }
-
-    fun hideKeyboard(): LiveData<Boolean>{
-        return hideKeyboard
     }
 
     companion object{

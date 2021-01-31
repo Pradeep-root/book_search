@@ -41,7 +41,6 @@
             android:layout_marginEnd="@dimen/search_edit_margin_end"
             android:enabled="false"
             android:clickable="false"
-            android:onClick="@{()->searchViewModel.searchBooks()}"
             android:text="@string/search" />
 
         <androidx.recyclerview.widget.RecyclerView

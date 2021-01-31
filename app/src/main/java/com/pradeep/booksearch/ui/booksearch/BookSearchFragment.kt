@@ -1,6 +1,8 @@
 package com.pradeep.booksearch.ui.booksearch
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pradeep.booksearch.data.model.Book
 import com.pradeep.booksearch.R
 import com.pradeep.booksearch.adapter.BooksAdapter
+import com.pradeep.booksearch.data.model.Book
 import com.pradeep.booksearch.databinding.FragmentBookSearchBinding
 import com.pradeep.booksearch.ui.base.BaseFragment
 
@@ -35,13 +37,36 @@ class BookSearchFragment : BaseFragment() {
 
         configureBookList()
         loadSearchedBook()
+        hideKeyboard()
+        searchTextWatcher()
         return rootView
+    }
+
+    private fun searchTextWatcher() {
+        binding.editBookSearch.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {}
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.btnSearch.isEnabled = count > 0
+                binding.btnSearch.isClickable = count > 0
+            }
+        })
+    }
+
+    private fun hideKeyboard(){
+        viewModel.hideKeyboard().observe(requireActivity(), Observer {
+            if(it){
+                dismissKeyboard(binding.root.windowToken)
+            }
+        })
     }
 
     private fun loadSearchedBook() {
         viewModel.searchedResult().observe(requireActivity(), Observer { books : List<Book>? ->
             if(books == null){
-               // TODO show msg result not found
+               adapter.updateList(mutableListOf())
             }else{
                 adapter.updateList(books)
             }

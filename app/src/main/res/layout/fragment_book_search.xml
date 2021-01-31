@@ -39,6 +39,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/search_edit_margin_end"
+            android:enabled="false"
+            android:clickable="false"
             android:onClick="@{()->searchViewModel.searchBooks()}"
             android:text="@string/search" />
 
@@ -49,6 +51,22 @@
             android:layout_margin="@dimen/recyclerview_book_list_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_book_search"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white_blur"
+            app:goneUnless="@{searchViewModel.showProgressBar}"
+            android:layout_margin="@dimen/recyclerview_book_list_margin"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_book_search">
+
+            <ProgressBar
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"/>
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

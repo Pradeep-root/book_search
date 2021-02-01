@@ -6,22 +6,25 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pradeep.booksearch.BookApplication
 import com.pradeep.booksearch.R
 import com.pradeep.booksearch.adapter.BooksAdapter
 import com.pradeep.booksearch.data.model.Book
 import com.pradeep.booksearch.databinding.FragmentBookSearchBinding
 import com.pradeep.booksearch.ui.base.BaseFragment
+import javax.inject.Inject
 
 class BookSearchFragment : BaseFragment() {
 
     private lateinit var binding: FragmentBookSearchBinding
-    private lateinit var viewModel: BookSearchViewModel
+
+    @Inject
+    lateinit var viewModel: BookSearchViewModel
+
     private lateinit var adapter : BooksAdapter
 
     override fun onCreateView(
@@ -32,7 +35,9 @@ class BookSearchFragment : BaseFragment() {
                 , R.layout.fragment_book_search, container, false)
 
         var rootView = binding.root
-        viewModel = ViewModelProvider(requireActivity()).get(BookSearchViewModel::class.java)
+
+        (activity?.application as BookApplication).appComponent.inject(this)
+       // viewModel = ViewModelProvider(requireActivity()).get(BookSearchViewModel::class.java)
 
         binding.searchViewModel = viewModel
 

@@ -17,6 +17,7 @@ class BooksAdapter(private var books : MutableList<Book>) : RecyclerView.Adapter
     private lateinit var context : Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksAdapter.BookHolderView {
+         this.context = parent.context
          var layoutInflater = LayoutInflater.from(parent.context)
          var binding = DataBindingUtil.inflate(layoutInflater,
              R.layout.item_lyout_books, parent, false) as ItemLyoutBooksBinding
@@ -24,12 +25,14 @@ class BooksAdapter(private var books : MutableList<Book>) : RecyclerView.Adapter
     }
 
     inner class BookHolderView(private var binding: ItemLyoutBooksBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(book: Book){
-            binding.book = book // set data on ui using binding
-            binding.imgBookCover.setOnClickListener {
+        init {
+            itemView.setOnClickListener {
                 var intent = Intent(context, BookDetailsActivity::class.java)
                 context.startActivity(intent)
             }
+        }
+        fun bind(book: Book){
+            binding.book = book // set data on ui using binding
         }
     }
 

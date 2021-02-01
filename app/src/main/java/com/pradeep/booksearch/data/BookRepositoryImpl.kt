@@ -9,8 +9,9 @@ import com.pradeep.booksearch.data.net.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class BookRepositoryImpl : BookRepository {
+class BookRepositoryImpl @Inject constructor(): BookRepository {
 
    private var TAG = this.javaClass.simpleName
 

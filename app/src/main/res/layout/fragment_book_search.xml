@@ -55,9 +55,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/white_blur"
-            app:goneUnless="@{searchViewModel.showProgressBar}"
+            android:goneUnless="@{searchViewModel.showProgressBar}"
             android:layout_margin="@dimen/recyclerview_book_list_margin"
             android:visibility="invisible"
+            android:clickable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_book_search">
 

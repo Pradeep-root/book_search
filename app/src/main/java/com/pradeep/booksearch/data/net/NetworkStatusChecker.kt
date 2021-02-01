@@ -10,7 +10,7 @@ class NetworkStatusChecker(private val connectivityManager: ConnectivityManager)
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun hasNetworkConnection():Boolean{
-        val network = connectivityManager?.activeNetwork?:return false
+        val network = connectivityManager.activeNetwork?:return false
         val capabilities = connectivityManager.getNetworkCapabilities(network) ?:return false
 
         return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)

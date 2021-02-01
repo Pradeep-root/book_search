@@ -1,18 +1,16 @@
 package com.pradeep.booksearch.ui.booksearch
 
 import android.view.View
-import android.widget.FrameLayout
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pradeep.booksearch.data.BookRepository
-import com.pradeep.booksearch.data.BookRepositoryImpl
 import com.pradeep.booksearch.data.model.Book
+import javax.inject.Inject
 
-class BookSearchViewModel(private var repository: BookRepository = BookRepositoryImpl()) : ViewModel() {
+class BookSearchViewModel @Inject constructor(var repository: BookRepository) : ViewModel() {
 
 
     var searchText = ObservableField<String>("")
@@ -35,7 +33,7 @@ class BookSearchViewModel(private var repository: BookRepository = BookRepositor
 
     companion object{
         @JvmStatic
-        @BindingAdapter("app:goneUnless")
+        @BindingAdapter("android:goneUnless")
         fun goneUnless(view: View, visible: Boolean) {
             view.visibility = if (visible) View.VISIBLE else View.GONE
         }

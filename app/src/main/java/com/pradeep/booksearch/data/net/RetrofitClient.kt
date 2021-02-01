@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
 
@@ -17,7 +18,12 @@ class RetrofitClient {
 
 
     init {
-        val okHttpClient = OkHttpClient.Builder().build()
+        val okHttpClient = OkHttpClient.Builder()
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .build()
+
         val retrofit = Retrofit.Builder()
             .baseUrl(GOOGLE_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

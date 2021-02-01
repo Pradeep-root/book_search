@@ -14,6 +14,10 @@ import com.pradeep.booksearch.ui.bookdetails.BookDetailsActivity
 class BooksAdapter(private var books : MutableList<Book>) : RecyclerView.Adapter<BooksAdapter.BookHolderView>() {
 
 
+    companion object{
+        const val INFO_LINK_PUT_EXTRA_KEY = "infoLink"
+    }
+
     private lateinit var context : Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksAdapter.BookHolderView {
@@ -27,8 +31,12 @@ class BooksAdapter(private var books : MutableList<Book>) : RecyclerView.Adapter
     inner class BookHolderView(private var binding: ItemLyoutBooksBinding) : RecyclerView.ViewHolder(binding.root){
         init {
             itemView.setOnClickListener {
-                var intent = Intent(context, BookDetailsActivity::class.java)
-                context.startActivity(intent)
+                var infoLink = binding.book?.volumeInfo?.infoLink
+                if(infoLink != null){
+                    var intent = Intent(context, BookDetailsActivity::class.java)
+                    intent.putExtra(INFO_LINK_PUT_EXTRA_KEY, infoLink.toString())
+                    context.startActivity(intent)
+                }
             }
         }
         fun bind(book: Book){

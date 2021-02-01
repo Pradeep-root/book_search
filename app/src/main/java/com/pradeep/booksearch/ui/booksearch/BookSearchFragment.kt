@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.pradeep.booksearch.BookApplication
 import com.pradeep.booksearch.R
 import com.pradeep.booksearch.adapter.BooksAdapter
@@ -50,14 +51,15 @@ class BookSearchFragment : BaseFragment() {
 
     private fun searchTextWatcher() {
         binding.editBookSearch.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?) {}
+            override fun afterTextChanged(s: Editable?) {
+                var isTextEntered = binding.editBookSearch.text.toString().length > 0
+                binding.btnSearch.isEnabled = isTextEntered
+                binding.btnSearch.isClickable = isTextEntered
+            }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.btnSearch.isEnabled = count > 0
-                binding.btnSearch.isClickable = count > 0
-            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
     }
 
@@ -77,6 +79,8 @@ class BookSearchFragment : BaseFragment() {
         viewModel.searchedResult().observe(requireActivity(), Observer { books : List<Book>? ->
             if(books == null){
                adapter.updateList(mutableListOf())
+                Snackbar.make(binding.root, R.string.something_went_wrong_error, Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
             }else{
                 adapter.updateList(books)
             }

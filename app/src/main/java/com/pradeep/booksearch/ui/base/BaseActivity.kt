@@ -21,4 +21,14 @@ open class BaseActivity : AppCompatActivity() {
         toolbar.setTitleTextColor(getColor(R.color.white))
         setSupportActionBar(toolbar)
     }
+
+    // This back only for device back button to load web last web page
+    override fun onSupportNavigateUp() : Boolean {
+        if(supportFragmentManager.backStackEntryCount == 0){
+           finish()
+        }else{
+            supportFragmentManager.backStackEntryCount
+        }
+        return true
+    }
 }

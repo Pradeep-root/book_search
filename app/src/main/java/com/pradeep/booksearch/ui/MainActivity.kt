@@ -15,7 +15,4 @@ class MainActivity : BaseActivity() {
         setToolbar(binding.toolbar, R.string.book_search_title)
     }
 
-    override fun onSupportNavigateUp() =
-        findNavController(R.id.nav_host_fragment).navigateUp()
-
 }

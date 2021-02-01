@@ -22,6 +22,9 @@ data class Book(
         @SerializedName("publishedDate")
         var publishedDate : String? = null,
 
+        @SerializedName("infoLink")
+        var infoLink : String? = null,
+
         @SerializedName("imageLinks")
         var imageLinks : ImageLinks
     ) {

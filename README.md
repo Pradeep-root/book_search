@@ -1,8 +1,8 @@
 # Google book search
 
 ## Libraries used
+* **Lifecycle-viewmodel** : For MVVM architecture and LiveData.
 * **Retrofit** : For making http requests.
-* **Lifecycle-viewmodel** : For MVVM architecture and LiveData. 
 * **Dagger2** : For dependency injection.
 * **Navigation** : Nevigation componentes for screen nevigation.
 * **Picasso** : For image loading.

@@ -4,7 +4,7 @@
 * **Lifecycle-viewmodel** : For MVVM architecture and LiveData.
 * **Retrofit** : For making http requests.
 * **Dagger2** : For dependency injection.
-* **Navigation** : Nevigation componentes for screen nevigation.
+* **Navigation** : navigation component dependency for screen navigation.
 * **Picasso** : For image loading.
 * **Data Binding** : For user interface interaction.
 * **Gson** : For JSON data parsing.

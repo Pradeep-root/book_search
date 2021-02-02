@@ -13,6 +13,6 @@
 ## Implementation  
 * Search query by text.
 * Details of book on webview by clicking on any item.
-* Handling of status.
+* Handling of network status.
 * Handling of response issues.
 * validations
